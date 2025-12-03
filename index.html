@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Status Messages</title>
+    <title>BRB.exe</title>
     <style>
         * {
             margin: 0;
@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #c3d9ff;
+            font-family: Tahoma, Arial, sans-serif;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23c3d9ff" width="100" height="100"/></svg>') #c3d9ff;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -21,32 +21,38 @@
             padding: 20px;
         }
 
-        .container {
-            background: #ffffff;
-            border: 3px solid #003399;
-            border-radius: 8px;
-            max-width: 480px;
-            width: 100%;
-            box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
+        .buddy-list-window {
+            background: #f0f0f0;
+            border: 3px solid;
+            border-color: #dfdfdf #404040 #404040 #dfdfdf;
+            width: 320px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
         }
 
         .title-bar {
-            background: linear-gradient(180deg, #4d90fe 0%, #0066cc 100%);
-            padding: 4px 8px;
+            background: linear-gradient(180deg, #0a246a 0%, #0e3eb3 50%, #0a246a 100%);
+            padding: 3px 4px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            border-bottom: 1px solid #003399;
+            cursor: default;
         }
 
         .title-bar-text {
             color: white;
+            font-size: 13px;
             font-weight: bold;
-            font-size: 12px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
+        }
+
+        .running-man {
+            width: 18px;
+            height: 18px;
+            background: #ffcc00;
+            border-radius: 2px;
+            display: inline-block;
         }
 
         .title-bar-controls {
@@ -54,268 +60,226 @@
             gap: 2px;
         }
 
-        .title-bar-button {
+        .title-bar-btn {
             width: 16px;
-            height: 16px;
-            border: 1px solid #ffffff;
-            background: #0066cc;
-            color: white;
-            font-size: 10px;
+            height: 14px;
+            border: 1px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            background: #c0c0c0;
+            color: #000;
+            font-size: 9px;
+            font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-family: 'Marlett', sans-serif;
         }
 
-        .content-area {
-            padding: 16px;
+        .title-bar-btn:active {
+            border-color: #000000 #ffffff #ffffff #000000;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 2px solid #ffcc00;
+        .buddy-list-header {
+            background: white;
+            padding: 4px;
+            border-bottom: 1px solid #c0c0c0;
         }
 
-        h1 {
-            font-size: 18px;
-            font-weight: bold;
-            color: #003399;
-            margin-bottom: 4px;
-        }
-
-        .subtitle {
-            color: #666;
-            font-size: 11px;
-        }
-
-        h2 {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #003399;
-            text-transform: uppercase;
-        }
-
-        .section {
-            margin-bottom: 16px;
-        }
-
-        .preset-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .preset-btn {
-            background: #fff9e6;
-            border: 1px solid #ffcc00;
-            border-radius: 3px;
-            padding: 8px 12px;
-            font-size: 12px;
-            cursor: pointer;
-            text-align: left;
-            color: #000;
+        .buddy-list-logo {
+            width: 100%;
+            height: 55px;
+            background: linear-gradient(135deg, #003399 0%, #0066cc 100%);
             display: flex;
             align-items: center;
-            gap: 8px;
-            position: relative;
+            justify-content: center;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        .preset-btn::before {
-            content: '';
-            width: 12px;
-            height: 12px;
-            background: #ffcc00;
-            border-radius: 50%;
-            border: 2px solid #ff9900;
-            flex-shrink: 0;
+        .buddy-list-tabs {
+            background: #e8e8e8;
+            padding: 3px 6px;
+            font-size: 12px;
+            border-bottom: 1px solid #c0c0c0;
         }
 
-        .preset-btn:hover {
-            background: #ffffcc;
-            border-color: #ff9900;
-        }
-
-        .preset-btn:active {
-            background: #ffee99;
-        }
-
-        .custom-section {
-            border-top: 2px solid #ffcc00;
-            padding-top: 16px;
-            margin-top: 16px;
-        }
-
-        textarea {
-            width: 100%;
-            padding: 8px;
-            border: 2px inset #cccccc;
-            font-size: 11px;
-            font-family: Arial, sans-serif;
-            resize: vertical;
-            margin-bottom: 8px;
-            min-height: 60px;
+        .buddy-group {
             background: white;
         }
 
-        textarea:focus {
-            outline: 2px solid #0066cc;
+        .group-header {
+            background: #f0f0f0;
+            padding: 4px 8px;
+            font-size: 13px;
+            font-weight: bold;
+            border-top: 1px solid #c0c0c0;
+            border-bottom: 1px solid #c0c0c0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
-        .primary-btn {
-            background: linear-gradient(180deg, #4d90fe 0%, #0066cc 100%);
-            color: white;
-            border: 1px solid #003399;
-            border-radius: 3px;
+        .buddy-item {
+            padding: 6px 24px;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .buddy-item:hover {
+            background: #e8f0ff;
+        }
+
+        .buddy-icon {
+            width: 18px;
+            height: 18px;
+            background: radial-gradient(circle, #ffdd00 0%, #ffaa00 100%);
+            border-radius: 50%;
+            flex-shrink: 0;
+            box-shadow: inset -1px -1px 2px rgba(0,0,0,0.2);
+        }
+
+        .edit-btn {
+            background: #e8e8e8;
+            border: 1px solid;
+            border-color: #ffffff #808080 #808080 #ffffff;
             padding: 6px 16px;
+            margin: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .edit-btn:active {
+            border-color: #808080 #ffffff #ffffff #808080;
+        }
+
+        /* Edit Away Message Modal */
+        .edit-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #d4d0c8;
+            border: 3px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            width: 450px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        .modal-title-bar {
+            background: linear-gradient(180deg, #0a246a 0%, #0e3eb3 50%, #0a246a 100%);
+            padding: 3px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: move;
+        }
+
+        .modal-title {
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .modal-close {
+            width: 16px;
+            height: 14px;
+            border: 1px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            background: #c0c0c0;
+            color: #000;
             font-size: 11px;
             font-weight: bold;
             cursor: pointer;
-            width: 100%;
-            box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
-        }
-
-        .primary-btn:hover {
-            background: linear-gradient(180deg, #5da3ff 0%, #0077dd 100%);
-        }
-
-        .primary-btn:active {
-            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-
-        @media (max-width: 640px) {
-            .container {
-                padding: 24px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            .preset-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="title-bar">
-            <div class="title-bar-text">
-                <span style="color: #ffcc00;">●</span>
-                Away Messages
-            </div>
-            <div class="title-bar-controls">
-                <div class="title-bar-button">_</div>
-                <div class="title-bar-button">□</div>
-                <div class="title-bar-button">×</div>
-            </div>
-        </div>
-        <div class="content-area">
-            <header>
-                <h1>Set Your Away Message</h1>
-                <p class="subtitle">Choose a status for your video call</p>
-            </header>
-
-        <div class="section">
-            <h2>Quick Messages</h2>
-            <div class="preset-grid">
-                <button class="preset-btn" onclick="showMessage('BRB - Grabbing water 💧')">
-                    💧 BRB - Grabbing water
-                </button>
-                <button class="preset-btn" onclick="showMessage('Be right back 👋')">
-                    👋 Be right back
-                </button>
-                <button class="preset-btn" onclick="showMessage('Starting in 5 minutes ⏰')">
-                    ⏰ Starting in 5 minutes
-                </button>
-                <button class="preset-btn" onclick="showMessage('Starting in 10 minutes ⏰')">
-                    ⏰ Starting in 10 minutes
-                </button>
-                <button class="preset-btn" onclick="showMessage('Thanks for joining! We'll start soon 🙏')">
-                    🙏 Thanks for joining!
-                </button>
-                <button class="preset-btn" onclick="showMessage('Taking a quick break ☕')">
-                    ☕ Taking a quick break
-                </button>
-                <button class="preset-btn" onclick="showMessage('Please wait a moment... ⏳')">
-                    ⏳ Please wait a moment...
-                </button>
-                <button class="preset-btn" onclick="showMessage('Technical difficulties, one sec 🔧')">
-                    🔧 Technical difficulties
-                </button>
-            </div>
-        </div>
-
-        <div class="custom-section">
-            <h2>Custom Message</h2>
-            <textarea id="customMessage" placeholder="Type your custom message here..."></textarea>
-            <button class="primary-btn" onclick="showCustomMessage()">Show Custom Message</button>
-        </div>
-
-    </div>
-
-    <!-- Message Display View -->
-    <div id="messageView" style="display: none;">
-        <button id="backButton" style="
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            background: linear-gradient(180deg, #4d90fe 0%, #0066cc 100%);
-            border: 2px solid #003399;
-            color: white;
-            border-radius: 4px;
-            padding: 8px 16px;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: bold;
-            font-family: Arial, sans-serif;
-            transition: all 0.1s;
-            z-index: 1000;
-            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
-        " 
-        onmouseover="this.style.background='linear-gradient(180deg, #5da3ff 0%, #0077dd 100%)';"
-        onmouseout="this.style.background='linear-gradient(180deg, #4d90fe 0%, #0066cc 100%)';"
-        title="Back to messages">
-            ◄ Back
-        </button>
-        <div style="
-            width: 100vw;
-            height: 100vh;
-            background: #fff9e6;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .modal-content {
+            padding: 12px;
+        }
+
+        .form-label {
+            font-size: 11px;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 3px;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            background: white;
+            font-size: 11px;
+            font-family: Tahoma, Arial, sans-serif;
+            margin-bottom: 12px;
+        }
+
+        .form-textarea {
+            width: 100%;
+            height: 80px;
+            padding: 4px;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            background: white;
+            font-size: 11px;
+            font-family: Tahoma, Arial, sans-serif;
+            resize: none;
+            margin-bottom: 8px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 12px;
+        }
+
+        .modal-btn {
+            background: #d4d0c8;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            padding: 4px 20px;
+            font-size: 11px;
+            cursor: pointer;
+            min-width: 75px;
+        }
+
+        .modal-btn:active {
+            border-color: #404040 #ffffff #ffffff #404040;
+        }
+
+        .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
-        ">
-            <div style="
-                text-align: center;
-                padding: 48px;
-                max-width: 90%;
-                background: white;
-                border: 3px solid #ffcc00;
-                border-radius: 12px;
-                box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
-            ">
-                <div id="displayMessage" style="
-                    font-size: 56px;
-                    font-weight: bold;
-                    color: #003399;
-                    line-height: 1.3;
-                    animation: slideUp 0.4s ease;
-                    font-family: Arial, sans-serif;
-                "></div>
-            </div>
-        </div>
-        </div>
-    </div>
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 999;
+        }
 
-    <style>
+        @media (max-width: 640px) {
+            .container {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 18px;
+            }
+        }
+
         @keyframes slideUp {
             from {
                 opacity: 0;
@@ -333,18 +297,179 @@
             }
         }
     </style>
+</head>
+<body>
+    <!-- Buddy List Window -->
+    <div class="buddy-list-window">
+        <div class="title-bar">
+            <div class="title-bar-text">
+                <span class="running-man"></span>
+                BRB.exe
+            </div>
+            <div class="title-bar-controls">
+                <div class="title-bar-btn">_</div>
+                <div class="title-bar-btn">□</div>
+                <div class="title-bar-btn">×</div>
+            </div>
+        </div>
+
+        <div class="buddy-list-header">
+            <div class="buddy-list-logo">BRB.exe</div>
+            <div class="buddy-list-tabs">Away Messages for Video Calls</div>
+        </div>
+
+        <div class="buddy-group">
+            <div class="group-header">
+                <span>▼</span> Away Messages (8/8)
+            </div>
+            <div class="buddy-item" onclick="showMessage('BRB - Grabbing water 💧')">
+                <span class="buddy-icon"></span>
+                💧 Grabbing water
+            </div>
+            <div class="buddy-item" onclick="showMessage('Be right back 👋')">
+                <span class="buddy-icon"></span>
+                👋 Be right back
+            </div>
+            <div class="buddy-item" onclick="showMessage('Starting in 5 minutes ⏰')">
+                <span class="buddy-icon"></span>
+                ⏰ Start in 5 min
+            </div>
+            <div class="buddy-item" onclick="showMessage('Starting in 10 minutes ⏰')">
+                <span class="buddy-icon"></span>
+                ⏰ Start in 10 min
+            </div>
+            <div class="buddy-item" onclick="showMessage('Thanks for joining! We'll start soon 🙏')">
+                <span class="buddy-icon"></span>
+                🙏 Thanks for joining!
+            </div>
+            <div class="buddy-item" onclick="showMessage('Taking a quick break ☕')">
+                <span class="buddy-icon"></span>
+                ☕ Quick break
+            </div>
+            <div class="buddy-item" onclick="showMessage('Please wait a moment... ⏳')">
+                <span class="buddy-icon"></span>
+                ⏳ Please wait...
+            </div>
+            <div class="buddy-item" onclick="showMessage('Technical difficulties, one sec 🔧')">
+                <span class="buddy-icon"></span>
+                🔧 Tech issues
+            </div>
+        </div>
+
+        <button class="edit-btn" onclick="openEditModal()">Edit Custom Message</button>
+    </div>
+
+    <!-- Edit Away Message Modal -->
+    <div id="editModal" style="display: none;">
+        <div class="modal-overlay" onclick="closeEditModal()"></div>
+        <div class="edit-modal">
+            <div class="modal-title-bar">
+                <span class="modal-title">Edit Away Message</span>
+                <button class="modal-close" onclick="closeEditModal()">×</button>
+            </div>
+            <div class="modal-content">
+                <label class="form-label">Enter new Away message:</label>
+                <textarea id="customMessage" class="form-textarea" placeholder="I am away from my computer right now..."></textarea>
+                
+                <div class="modal-buttons">
+                    <button class="modal-btn" onclick="showCustomMessage()">I'm Away</button>
+                    <button class="modal-btn" onclick="closeEditModal()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Message Display View -->
+    <div id="messageView" style="display: none;">
+        <div style="
+            width: 100vw;
+            height: 100vh;
+            background: url('https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2F4%2Fe%2F2%2Fe%2F3%2F14e2e39bf8d2f5219113983aecd71f16465a7211.jpg&w=4500&q=100') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+        ">
+            <button id="backButton" style="
+                position: fixed;
+                top: 20px;
+                left: 20px;
+                background: #d4d0c8;
+                border: 2px solid;
+                border-color: #ffffff #404040 #404040 #ffffff;
+                color: #000;
+                padding: 6px 20px;
+                cursor: pointer;
+                font-size: 11px;
+                font-weight: bold;
+                font-family: Tahoma, Arial, sans-serif;
+                z-index: 1001;
+                box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+            " 
+            onmouseover="this.style.background='#e8e4dc';"
+            onmouseout="this.style.background='#d4d0c8';"
+            onclick="goBack()">
+                ◄ Back
+            </button>
+            <div style="
+                background: #f0f0f0;
+                border: 3px solid;
+                border-color: #dfdfdf #404040 #404040 #dfdfdf;
+                padding: 0;
+                max-width: 90%;
+                box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.3);
+            ">
+                <div style="
+                    background: linear-gradient(180deg, #0a246a 0%, #0e3eb3 50%, #0a246a 100%);
+                    padding: 3px 4px;
+                    color: white;
+                    font-size: 11px;
+                    font-weight: bold;
+                    font-family: Tahoma, Arial, sans-serif;
+                ">
+                    BRB.exe - Status Message
+                </div>
+                <div style="
+                    text-align: center;
+                    padding: 60px 80px;
+                    background: white;
+                ">
+                    <div id="displayMessage" style="
+                        font-size: 48px;
+                        font-weight: bold;
+                        color: #000000;
+                        line-height: 1.4;
+                        animation: slideUp 0.4s ease;
+                        font-family: Tahoma, Arial, sans-serif;
+                    "></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         function showMessage(message) {
             document.getElementById('displayMessage').textContent = message;
-            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.buddy-list-window').style.display = 'none';
+            document.getElementById('editModal').style.display = 'none';
             document.getElementById('messageView').style.display = 'block';
             document.body.style.overflow = 'hidden';
+        }
+
+        function openEditModal() {
+            document.getElementById('editModal').style.display = 'block';
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').style.display = 'none';
         }
 
         function showCustomMessage() {
             const message = document.getElementById('customMessage').value.trim();
             if (message) {
+                closeEditModal();
                 showMessage(message);
                 document.getElementById('customMessage').value = '';
             } else {
@@ -353,22 +478,24 @@
         }
 
         function goBack() {
-            document.querySelector('.container').style.display = 'block';
+            document.querySelector('.buddy-list-window').style.display = 'block';
             document.getElementById('messageView').style.display = 'none';
             document.body.style.overflow = 'auto';
         }
 
-        // Back button click
-        document.getElementById('backButton').addEventListener('click', goBack);
-
-        // ESC key to go back
+        // ESC key to go back or close modal
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                goBack();
+                const modal = document.getElementById('editModal');
+                if (modal.style.display === 'block') {
+                    closeEditModal();
+                } else {
+                    goBack();
+                }
             }
         });
 
-        // Allow Enter key to submit custom message
+        // Allow Cmd/Ctrl + Enter to submit custom message
         document.getElementById('customMessage').addEventListener('keydown', function(e) {
             if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
                 showCustomMessage();

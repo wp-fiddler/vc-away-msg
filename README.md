@@ -1,112 +1,62 @@
-# Status Messages - Web App
+# BRB.exe
 
-A simple web app for creating quick status messages for video meetings. Works with **any video platform** (Zoom Desktop, Google Meet, Microsoft Teams, Webex, etc.)
+Y2K nostalgia meets modern video calls. A retro AIM-style web app for displaying away messages during Zoom, Meet, Teams, or any video meeting.
 
 ## 🌐 Live App
 
 **Visit:** https://wp-fiddler.github.io/vc-away-msg/
 
-Bookmark this URL for instant access!
-
 ## Features
 
-✨ **No Installation Required** - Just open the URL  
-💬 **8 Preset Messages** - One-click common messages  
+💾 **Retro Windows 98/XP Aesthetic** - Complete with buddy list and Bliss wallpaper  
+🟡 **Classic Buddy Icons** - Yellow dots just like AIM  
+💬 **8 Preset Messages** - One-click away statuses  
 ✏️ **Custom Messages** - Type anything you want  
-🎨 **Beautiful Display** - Large, colorful, easy-to-read messages  
-🔖 **Works Everywhere** - Desktop Zoom, Meet, Teams, any platform  
-📱 **Access from Any Device** - Phone, tablet, laptop
+📺 **Works with Any Platform** - Zoom, Meet, Teams, Webex, etc.  
+🔖 **Bookmark & Go** - No installation needed  
 
 ## How to Use
 
-1. **Open the app**: https://wp-fiddler.github.io/vc-away-msg/
-2. **Bookmark it** (Cmd+D on Mac, Ctrl+D on Windows)
-3. **Use it anytime!**
+1. **Visit the app** (bookmark it!)
+2. **Click a buddy** to select your away message
+3. **Share your screen/window** in your video call
+4. Participants see your status on the iconic Windows XP Bliss wallpaper!
 
-## In a Meeting
+## Preset Away Messages
 
-1. **Open the bookmarked page** (or open the HTML file)
-2. **Click a preset** or type a custom message
-3. **Message takes over the full screen** instantly
-4. **In your video call**, click "Share Screen"
-5. **Select this window/tab**
-6. **Click "Share"**
-7. Done! Participants see your message
-8. **Click the back arrow** (or press ESC) to return to message selection
-
-## Preset Messages
-
-- 💧 BRB - Grabbing water
-- 👋 Be right back  
-- ⏰ Starting in 5 minutes
-- ⏰ Starting in 10 minutes
+- 💧 Grabbing water
+- 👋 Be right back
+- ⏰ Start in 5 min
+- ⏰ Start in 10 min
 - 🙏 Thanks for joining!
-- ☕ Taking a quick break
-- ⏳ Please wait a moment...
-- 🔧 Technical difficulties
+- ☕ Quick break
+- ⏳ Please wait...
+- 🔧 Tech issues
 
-## Tips
+## The Name
 
-- **Cmd/Ctrl + Enter** in the custom field to instantly show your message
-- **ESC key** or click the back arrow to return to message selection
-- **Switch messages quickly** - go back and select a different one
-- **Share this window/tab** not your whole screen (avoids infinite mirror)
-- **Full screen mode** (F11 or Cmd+Ctrl+F) for even cleaner display
+**BRB.exe** = "Be Right Back" + Windows executable file extension
 
-## Why This Approach?
+A punny nod to:
+- Classic Windows programs (.exe)
+- The OG away message acronym (BRB)
+- Y2K computing nostalgia
+- The fact that it "executes" your away message
 
-**Works with:**
-- ✅ Zoom Desktop App
-- ✅ Google Meet
-- ✅ Microsoft Teams
-- ✅ Webex
-- ✅ Any video conferencing tool
+## Why This Exists
 
-**No limitations:**
-- ✅ No extensions needed
-- ✅ No app installations
-- ✅ No marketplace approvals
-- ✅ Works offline (once opened)
-- ✅ No browser dependencies
+Created for busy PMs and professionals who need quick status messages in video meetings without:
+- Creating slides
+- Opening presentation software  
+- Manually typing in shared documents
 
-## Comparison
+Just click, share, done.
 
-| Approach | Zoom Desktop | Meet | Teams | Ease |
-|----------|--------------|------|-------|------|
-| **This Webapp** | ✅ | ✅ | ✅ | ⭐⭐⭐⭐⭐ |
-| Chrome Extensions | ❌ | ✅ | ❌ | ⭐⭐⭐ |
-| Zoom App SDK | ✅ | ❌ | ❌ | ⭐ |
+## Tech Stack
 
-## Advanced: Add to Dock/Taskbar
-
-### Mac:
-1. Open the file in Safari
-2. File → Add to Dock
-
-### Windows:
-1. Right-click the HTML file
-2. Send to → Desktop (create shortcut)
-3. Pin to taskbar
+Pure HTML/CSS/JavaScript - one file, zero dependencies, maximum nostalgia.
 
 ---
 
-## Files
-
-- `index.html` - The complete app (single file!)
-- `README.md` - This file
-
-## Customization
-
-Want to add your own preset messages? Just edit `index.html`:
-
-1. Find the section with `<button class="preset-btn">`
-2. Copy one of the existing buttons
-3. Change the emoji and text
-4. Save the file
-
----
-
-Built for busy PMs who need quick status updates across all video platforms! 🚀
-
-**This is the simplest solution** - no extensions, no apps, just a webpage you can bookmark.
+Built with ❤️ and 2000s vibes
 
