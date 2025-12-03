@@ -12,8 +12,8 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: Arial, sans-serif;
+            background: #c3d9ff;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -22,119 +22,167 @@
         }
 
         .container {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            max-width: 700px;
+            background: #ffffff;
+            border: 3px solid #003399;
+            border-radius: 8px;
+            max-width: 480px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .title-bar {
+            background: linear-gradient(180deg, #4d90fe 0%, #0066cc 100%);
+            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #003399;
+        }
+
+        .title-bar-text {
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .title-bar-button {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #ffffff;
+            background: #0066cc;
+            color: white;
+            font-size: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .content-area {
+            padding: 16px;
         }
 
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #ffcc00;
         }
 
         h1 {
-            font-size: 32px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #003399;
+            margin-bottom: 4px;
         }
 
         .subtitle {
             color: #666;
-            font-size: 16px;
+            font-size: 11px;
         }
 
         h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 20px;
-            color: #333;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #003399;
+            text-transform: uppercase;
         }
 
         .section {
-            margin-bottom: 40px;
+            margin-bottom: 16px;
         }
 
         .preset-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
         .preset-btn {
-            background: #f7f9fb;
-            border: 2px solid #e1e1e6;
-            border-radius: 12px;
-            padding: 16px;
-            font-size: 15px;
-            font-weight: 500;
+            background: #fff9e6;
+            border: 1px solid #ffcc00;
+            border-radius: 3px;
+            padding: 8px 12px;
+            font-size: 12px;
             cursor: pointer;
-            transition: all 0.2s;
             text-align: left;
-            color: #333;
+            color: #000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+        }
+
+        .preset-btn::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: #ffcc00;
+            border-radius: 50%;
+            border: 2px solid #ff9900;
+            flex-shrink: 0;
         }
 
         .preset-btn:hover {
-            background: linear-gradient(135deg, #667eea15, #764ba215);
-            border-color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+            background: #ffffcc;
+            border-color: #ff9900;
         }
 
         .preset-btn:active {
-            transform: translateY(0);
+            background: #ffee99;
         }
 
         .custom-section {
-            border-top: 2px solid #e1e1e6;
-            padding-top: 32px;
+            border-top: 2px solid #ffcc00;
+            padding-top: 16px;
+            margin-top: 16px;
         }
 
         textarea {
             width: 100%;
-            padding: 16px;
-            border: 2px solid #e1e1e6;
-            border-radius: 12px;
-            font-size: 16px;
-            font-family: inherit;
+            padding: 8px;
+            border: 2px inset #cccccc;
+            font-size: 11px;
+            font-family: Arial, sans-serif;
             resize: vertical;
-            margin-bottom: 16px;
-            transition: border-color 0.2s;
-            min-height: 100px;
+            margin-bottom: 8px;
+            min-height: 60px;
+            background: white;
         }
 
         textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            outline: 2px solid #0066cc;
         }
 
         .primary-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(180deg, #4d90fe 0%, #0066cc 100%);
             color: white;
-            border: none;
-            border-radius: 12px;
-            padding: 16px 32px;
-            font-size: 16px;
-            font-weight: 600;
+            border: 1px solid #003399;
+            border-radius: 3px;
+            padding: 6px 16px;
+            font-size: 11px;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.2s;
             width: 100%;
+            box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
         }
 
         .primary-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+            background: linear-gradient(180deg, #5da3ff 0%, #0077dd 100%);
         }
 
         .primary-btn:active {
-            transform: translateY(0);
+            box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
 
 
@@ -155,10 +203,22 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>💬 Status Messages</h1>
-            <p class="subtitle">Quick status updates for video meetings</p>
-        </header>
+        <div class="title-bar">
+            <div class="title-bar-text">
+                <span style="color: #ffcc00;">●</span>
+                Away Messages
+            </div>
+            <div class="title-bar-controls">
+                <div class="title-bar-button">_</div>
+                <div class="title-bar-button">□</div>
+                <div class="title-bar-button">×</div>
+            </div>
+        </div>
+        <div class="content-area">
+            <header>
+                <h1>Set Your Away Message</h1>
+                <p class="subtitle">Choose a status for your video call</p>
+            </header>
 
         <div class="section">
             <h2>Quick Messages</h2>
@@ -202,32 +262,30 @@
     <div id="messageView" style="display: none;">
         <button id="backButton" style="
             position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(180deg, #4d90fe 0%, #0066cc 100%);
+            border: 2px solid #003399;
             color: white;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            border-radius: 4px;
+            padding: 8px 16px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            transition: all 0.2s;
-            backdrop-filter: blur(10px);
+            font-size: 12px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            transition: all 0.1s;
             z-index: 1000;
+            box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
         " 
-        onmouseover="this.style.background='rgba(255,255,255,0.3)'; this.style.transform='scale(1.05)';"
-        onmouseout="this.style.background='rgba(255,255,255,0.2)'; this.style.transform='scale(1)';"
+        onmouseover="this.style.background='linear-gradient(180deg, #5da3ff 0%, #0077dd 100%)';"
+        onmouseout="this.style.background='linear-gradient(180deg, #4d90fe 0%, #0066cc 100%)';"
         title="Back to messages">
-            ←
+            ◄ Back
         </button>
         <div style="
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #fff9e6;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -235,16 +293,25 @@
             top: 0;
             left: 0;
         ">
-            <div style="text-align: center; padding: 48px; max-width: 90%;">
+            <div style="
+                text-align: center;
+                padding: 48px;
+                max-width: 90%;
+                background: white;
+                border: 3px solid #ffcc00;
+                border-radius: 12px;
+                box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+            ">
                 <div id="displayMessage" style="
-                    font-size: 72px;
-                    font-weight: 700;
-                    color: white;
-                    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+                    font-size: 56px;
+                    font-weight: bold;
+                    color: #003399;
                     line-height: 1.3;
                     animation: slideUp 0.4s ease;
+                    font-family: Arial, sans-serif;
                 "></div>
             </div>
+        </div>
         </div>
     </div>
 
