@@ -13,12 +13,287 @@
 
         body {
             font-family: Tahoma, Arial, sans-serif;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect fill="%23c3d9ff" width="100" height="100"/></svg>') #c3d9ff;
+            background: url('https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2F1%2F4%2Fe%2F2%2Fe%2F3%2F14e2e39bf8d2f5219113983aecd71f16465a7211.jpg&w=4500&q=100') center/cover no-repeat fixed;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .desktop {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            padding: 20px;
+        }
+
+        .desktop-icons {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .desktop-icon {
+            width: 70px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .desktop-icon-img {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 4px;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 32px;
+            filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+        }
+
+        .desktop-icon-label {
+            color: white;
+            font-size: 11px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            padding: 2px 4px;
+        }
+
+        .desktop-icon:active .desktop-icon-img,
+        .desktop-icon:active .desktop-icon-label {
+            background: rgba(0, 51, 153, 0.6);
+            border-radius: 2px;
+        }
+
+        .taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(180deg, #245edb 0%, #1941a5 100%);
+            border-top: 2px solid #5a9dff;
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.3);
+            z-index: 10000;
+        }
+
+        .start-button {
+            background: linear-gradient(180deg, #4caf50 0%, #2e7d32 100%);
+            border: 1px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            color: white;
+            font-weight: bold;
+            font-size: 11px;
+            padding: 2px 12px 2px 6px;
+            height: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-button:active {
+            border-color: #000000 #ffffff #ffffff #000000;
+        }
+
+        .start-icon {
+            width: 16px;
+            height: 16px;
+            background: #ffcc00;
+            border-radius: 2px;
+        }
+
+        .taskbar-programs {
+            flex: 1;
+            display: flex;
+            gap: 4px;
+            margin-left: 8px;
+        }
+
+        .taskbar-program {
+            background: linear-gradient(180deg, #3d6dcc 0%, #2952a6 100%);
+            border: 1px solid;
+            border-color: #6699ff #1a3d7a #1a3d7a #6699ff;
+            color: white;
+            font-size: 11px;
+            padding: 2px 8px 2px 12px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            max-width: 170px;
+            box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.2);
+            position: relative;
+        }
+
+        .taskbar-close {
+            width: 14px;
+            height: 14px;
+            background: #c0c0c0;
+            border: 1px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            color: #000;
+            font-size: 9px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        .taskbar-close:hover {
+            background: #e0e0e0;
+        }
+
+        .taskbar-close:active {
+            border-color: #000000 #ffffff #ffffff #000000;
+        }
+
+        .taskbar-tray {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: auto;
+            padding: 0 8px;
+            border-left: 1px solid #1941a5;
+            height: 24px;
+        }
+
+        .tray-icon {
+            width: 16px;
+            height: 16px;
+            font-size: 12px;
+        }
+
+        .taskbar-clock {
+            color: white;
+            font-size: 11px;
+            padding: 0 4px;
+        }
+
+        /* Start Menu Modal */
+        .start-menu {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 520px;
+            background: #d4d0c8;
+            border: 3px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.3);
+            z-index: 10001;
+            display: none;
+        }
+
+        .start-menu-title-bar {
+            background: linear-gradient(180deg, #0a246a 0%, #0e3eb3 50%, #0a246a 100%);
+            padding: 3px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: move;
+        }
+
+        .start-menu-title-text {
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .start-menu-close {
+            width: 16px;
+            height: 14px;
+            border: 1px solid;
+            border-color: #ffffff #000000 #000000 #ffffff;
+            background: #c0c0c0;
+            color: #000;
+            font-size: 11px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .start-menu-close:active {
+            border-color: #000000 #ffffff #ffffff #000000;
+        }
+
+        .start-menu-body {
+            display: flex;
+            background: white;
+            margin: 8px;
+        }
+
+        .start-menu-sidebar {
+            background: linear-gradient(180deg, #000080 0%, #1084d0 100%);
+            width: 100px;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .start-menu-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .start-menu-logo-text {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .start-menu-content {
+            flex: 1;
             padding: 20px;
+        }
+
+        .start-menu-heading {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000080;
+            margin-bottom: 15px;
+        }
+
+        .start-menu-text {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #000;
+            margin-bottom: 12px;
+        }
+
+        .start-menu-footer {
+            padding: 8px 12px;
+            text-align: right;
+            border-top: 1px solid #808080;
+        }
+
+        .start-menu-button {
+            background: #d4d0c8;
+            border: 2px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            padding: 6px 24px;
+            font-size: 11px;
+            cursor: pointer;
+            min-width: 80px;
+        }
+
+        .start-menu-button:active {
+            border-color: #404040 #ffffff #ffffff #404040;
         }
 
         .buddy-list-window {
@@ -27,6 +302,11 @@
             border-color: #dfdfdf #404040 #404040 #dfdfdf;
             width: 320px;
             box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 100;
         }
 
         .title-bar {
@@ -35,7 +315,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            cursor: default;
+            cursor: move;
+            user-select: none;
         }
 
         .title-bar-text {
@@ -88,23 +369,86 @@
 
         .buddy-list-logo {
             width: 100%;
-            height: 55px;
-            background: linear-gradient(135deg, #003399 0%, #0066cc 100%);
+            height: 80px;
+            background: linear-gradient(135deg, #003399 0%, #0066cc 50%, #003399 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 13px;
-            font-weight: bold;
             margin-bottom: 5px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .buddy-list-tabs {
-            background: #e8e8e8;
-            padding: 3px 6px;
-            font-size: 12px;
-            border-bottom: 1px solid #c0c0c0;
+        .logo-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
         }
+
+        .logo-icon-wrapper {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-running-man {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ffdd00 0%, #ffaa00 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-brb {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 9px;
+            font-style: italic;
+            font-weight: normal;
+            opacity: 0.95;
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+
+        .logo-triangle {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 60px solid rgba(255, 255, 255, 0.1);
+            border-top: 40px solid transparent;
+            border-bottom: 40px solid transparent;
+            z-index: 1;
+        }
+
 
         .buddy-group {
             background: white;
@@ -213,6 +557,49 @@
             font-size: 11px;
             margin-bottom: 4px;
             display: block;
+            font-weight: bold;
+        }
+
+        .formatting-toolbar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .toolbar-group {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .toolbar-label {
+            font-size: 10px;
+            color: #000;
+        }
+
+        .toolbar-select {
+            padding: 2px 4px;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            background: white;
+            font-size: 11px;
+            font-family: Tahoma, Arial, sans-serif;
+        }
+
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .color-picker {
+            width: 30px;
+            height: 20px;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            cursor: pointer;
         }
 
         .form-input {
@@ -229,11 +616,11 @@
         .form-textarea {
             width: 100%;
             height: 80px;
-            padding: 4px;
+            padding: 6px;
             border: 2px solid;
             border-color: #808080 #ffffff #ffffff #808080;
             background: white;
-            font-size: 11px;
+            font-size: 14px;
             font-family: Tahoma, Arial, sans-serif;
             resize: none;
             margin-bottom: 8px;
@@ -270,6 +657,109 @@
             z-index: 999;
         }
 
+        /* Snake Game Window */
+        .snake-game-window {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #d4d0c8;
+            border: 3px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            width: 420px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .snake-game-content {
+            padding: 12px;
+            text-align: center;
+        }
+
+        #snakeCanvas {
+            background: #000;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .snake-score {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 8px 0;
+            color: #000;
+        }
+
+        .snake-controls {
+            font-size: 10px;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* File Browser Window */
+        .file-browser-window {
+            position: fixed;
+            top: 15%;
+            left: 15%;
+            background: #d4d0c8;
+            border: 3px solid;
+            border-color: #ffffff #404040 #404040 #ffffff;
+            width: 500px;
+            box-shadow: 2px 2px 1px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .file-browser-content {
+            background: white;
+            margin: 8px;
+            padding: 12px;
+            border: 2px solid;
+            border-color: #808080 #ffffff #ffffff #808080;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 8px;
+            font-size: 11px;
+            cursor: default;
+            border-radius: 2px;
+        }
+
+        .file-item:hover {
+            background: #e8f0ff;
+        }
+
+        .file-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .file-details {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .file-description {
+            font-size: 9px;
+            color: #666;
+            font-style: italic;
+        }
+
         @media (max-width: 640px) {
             .container {
                 max-width: 100%;
@@ -299,8 +789,29 @@
     </style>
 </head>
 <body>
-    <!-- Buddy List Window -->
-    <div class="buddy-list-window">
+    <div class="desktop">
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <div class="desktop-icon" ondblclick="openBRBWindow()">
+                <div class="desktop-icon-img">💬</div>
+                <div class="desktop-icon-label">BRB.exe</div>
+            </div>
+            <div class="desktop-icon" ondblclick="openMyComputer()">
+                <div class="desktop-icon-img">💻</div>
+                <div class="desktop-icon-label">My Computer</div>
+            </div>
+            <div class="desktop-icon" ondblclick="openRecycleBin()">
+                <div class="desktop-icon-img">🗑️</div>
+                <div class="desktop-icon-label">Recycle Bin</div>
+            </div>
+            <div class="desktop-icon" ondblclick="openSnakeGame()">
+                <div class="desktop-icon-img">🐍</div>
+                <div class="desktop-icon-label">Snake.exe</div>
+            </div>
+        </div>
+
+        <!-- Buddy List Window -->
+        <div class="buddy-list-window">
         <div class="title-bar">
             <div class="title-bar-text">
                 <span class="running-man"></span>
@@ -309,54 +820,275 @@
             <div class="title-bar-controls">
                 <div class="title-bar-btn">_</div>
                 <div class="title-bar-btn">□</div>
-                <div class="title-bar-btn">×</div>
+                <div class="title-bar-btn" onclick="closeBRBWindow()">×</div>
             </div>
         </div>
 
         <div class="buddy-list-header">
-            <div class="buddy-list-logo">BRB.exe</div>
-            <div class="buddy-list-tabs">Away Messages for Video Calls</div>
+            <div class="buddy-list-logo">
+                <div class="logo-triangle"></div>
+                <div class="logo-content">
+                    <div class="logo-icon-wrapper">
+                        <div class="logo-running-man">💬</div>
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo-brb">BRB.exe</div>
+                        <div class="logo-subtitle">Old school away messages for video calls</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="buddy-group">
             <div class="group-header">
-                <span>▼</span> Away Messages (8/8)
+                <span>▼</span> Away Messages (9/9)
             </div>
-            <div class="buddy-item" onclick="showMessage('BRB - Grabbing water 💧')">
+            <div class="buddy-item" onclick="showStyledPreset('brb gettin h2o ttyl 💧', 'Comic Sans MS', '14px', '#0066ff', '#ffff99')">
                 <span class="buddy-icon"></span>
-                💧 Grabbing water
+                💧 gettin h2o
             </div>
-            <div class="buddy-item" onclick="showMessage('Be right back 👋')">
+            <div class="buddy-item" onclick="showStyledPreset('~~* BRB *~~', 'Arial', '14px', '#ff00ff', '#00ffff')">
                 <span class="buddy-icon"></span>
-                👋 Be right back
+                👋 brb
             </div>
-            <div class="buddy-item" onclick="showMessage('Starting in 5 minutes ⏰')">
+            <div class="buddy-item" onclick="showStyledPreset('starting in 5 dont leave!!!', 'Times New Roman', '14px', '#ffffff', '#ff0066')">
                 <span class="buddy-icon"></span>
-                ⏰ Start in 5 min
+                ⏰ start in 5
             </div>
-            <div class="buddy-item" onclick="showMessage('Starting in 10 minutes ⏰')">
+            <div class="buddy-item" onclick="showStyledPreset('b there in 10 min', 'Tahoma', '14px', '#009900', '#ffcc00')">
                 <span class="buddy-icon"></span>
-                ⏰ Start in 10 min
+                ⏰ 10 min
             </div>
-            <div class="buddy-item" onclick="showMessage('Thanks for joining! We'll start soon 🙏')">
+            <div class="buddy-item" onclick="showStyledPreset('thx 4 coming!! <3 <3', 'Comic Sans MS', '14px', '#ff0000', '#ffccff')">
                 <span class="buddy-icon"></span>
-                🙏 Thanks for joining!
+                🙏 thx 4 coming
             </div>
-            <div class="buddy-item" onclick="showMessage('Taking a quick break ☕')">
+            <div class="buddy-item" onclick="showStyledPreset('afk... back soon', 'Arial', '14px', '#ffffff', '#6600cc')">
                 <span class="buddy-icon"></span>
-                ☕ Quick break
+                ☕ afk
             </div>
-            <div class="buddy-item" onclick="showMessage('Please wait a moment... ⏳')">
+            <div class="buddy-item" onclick="showStyledPreset('hold on... w8 4 me', 'Times New Roman', '14px', '#000000', '#66ff66')">
                 <span class="buddy-icon"></span>
-                ⏳ Please wait...
+                ⏳ w8 4 me
             </div>
-            <div class="buddy-item" onclick="showMessage('Technical difficulties, one sec 🔧')">
+            <div class="buddy-item" onclick="showStyledPreset('technical difficultiesss brb', 'Tahoma', '14px', '#ffff00', '#000066')">
                 <span class="buddy-icon"></span>
-                🔧 Tech issues
+                🔧 tech problems
+            </div>
+            <div class="buddy-item" onclick="showRandomSongLyrics()">
+                <span class="buddy-icon"></span>
+                🎵 random song lyric
             </div>
         </div>
 
         <button class="edit-btn" onclick="openEditModal()">Edit Custom Message</button>
+        </div>
+    </div>
+
+    <!-- Windows XP Taskbar -->
+    <div class="taskbar">
+        <button class="start-button" onclick="toggleStartMenu()">
+            <span class="start-icon"></span>
+            start
+        </button>
+        <div class="taskbar-programs" id="taskbarPrograms">
+            <div class="taskbar-program" id="brbTaskbar">
+                <span class="running-man" style="width: 14px; height: 14px; display: inline-block; background: #ffcc00;"></span>
+                <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">BRB.exe</span>
+                <button class="taskbar-close" onclick="event.stopPropagation(); closeBRBWindow();">×</button>
+            </div>
+        </div>
+        <div class="taskbar-tray">
+            <span class="tray-icon">🔊</span>
+            <span class="tray-icon">🌐</span>
+            <div class="taskbar-clock" id="taskbarClock">12:00 PM</div>
+        </div>
+    </div>
+
+    <!-- Start Menu Modal -->
+    <div id="startMenu" class="start-menu">
+        <div class="start-menu-title-bar">
+            <span class="start-menu-title-text">Welcome to BRB.exe 98</span>
+            <button class="start-menu-close" onclick="toggleStartMenu()">×</button>
+        </div>
+        <div class="start-menu-body">
+            <div class="start-menu-sidebar">
+                <div class="start-menu-icon">💬</div>
+                <div class="start-menu-logo-text">BRB.exe 98</div>
+            </div>
+            <div class="start-menu-content">
+                <div class="start-menu-heading">Welcome</div>
+                <div class="start-menu-text">
+                    Welcome to the exciting new world of BRB.exe 98, where your video call 
+                    desktop meets nostalgia!
+                </div>
+                <div class="start-menu-text">
+                    Sit back and relax as you explore the most unnecessary but delightful 
+                    way to say "brb" in modern meetings.
+                </div>
+                <div class="start-menu-text">
+                    <b>Features:</b><br>
+                    • 100% Y2K nostalgia<br>
+                    • 0% actual Windows code<br>
+                    • Plays Snake during meetings<br>
+                    • Makes your away messages retro AF
+                </div>
+                <div class="start-menu-text">
+                    <b>System Requirements:</b><br>
+                    • A sense of humor<br>
+                    • Video calls that need spicing up<br>
+                    • Fondness for the year 2000
+                </div>
+            </div>
+        </div>
+        <div class="start-menu-footer">
+            <button class="start-menu-button" onclick="toggleStartMenu()">Close</button>
+        </div>
+    </div>
+
+    <!-- My Computer Window -->
+    <div id="myComputerWindow" class="file-browser-window" style="display: none;">
+        <div class="modal-title-bar">
+            <span class="modal-title">My Computer</span>
+            <button class="modal-close" onclick="closeMyComputer()">×</button>
+        </div>
+        <div class="file-browser-content">
+            <div class="file-item">
+                <div class="file-icon">📁</div>
+                <div class="file-details">
+                    <div class="file-name">Definitely_Not_Memes</div>
+                    <div class="file-description">127 GB of "work documents"</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">📁</div>
+                <div class="file-details">
+                    <div class="file-name">Meeting_Notes_I_Swear</div>
+                    <div class="file-description">Mostly doodles and grocery lists</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">💾</div>
+                <div class="file-details">
+                    <div class="file-name">presentation_final_FINAL_v2_USE_THIS.pptx</div>
+                    <div class="file-description">Definitely the right version</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">🎵</div>
+                <div class="file-details">
+                    <div class="file-name">Linkin_Park_-_In_The_End.mp3.exe</div>
+                    <div class="file-description">Totally legit from LimeWire</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">📄</div>
+                <div class="file-details">
+                    <div class="file-name">passwords.txt</div>
+                    <div class="file-description">hunter2, admin123, Password1!</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">🖼️</div>
+                <div class="file-details">
+                    <div class="file-name">desktop_backgrounds_i_never_use</div>
+                    <div class="file-description">2,847 files</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">📁</div>
+                <div class="file-details">
+                    <div class="file-name">Old_Computer_Backup_2003</div>
+                    <div class="file-description">Never opened, never deleted</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">⚠️</div>
+                <div class="file-details">
+                    <div class="file-name">system32</div>
+                    <div class="file-description">DO NOT DELETE (jk it's fine)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recycle Bin Window -->
+    <div id="recycleBinWindow" class="file-browser-window" style="display: none;">
+        <div class="modal-title-bar">
+            <span class="modal-title">Recycle Bin</span>
+            <button class="modal-close" onclick="closeRecycleBin()">×</button>
+        </div>
+        <div class="file-browser-content">
+            <div class="file-item">
+                <div class="file-icon">📧</div>
+                <div class="file-details">
+                    <div class="file-name">Reply_All_Disaster_Email.msg</div>
+                    <div class="file-description">The company-wide oops heard 'round the org</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">💬</div>
+                <div class="file-details">
+                    <div class="file-name">Slack_Message_To_Wrong_Channel.txt</div>
+                    <div class="file-description">"Anyone want lunch?" sent to #exec-team</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">📸</div>
+                <div class="file-details">
+                    <div class="file-name">embarrassing_zoom_screenshot.png</div>
+                    <div class="file-description">Caught mid-yawn in all-hands</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">📊</div>
+                <div class="file-details">
+                    <div class="file-name">Q4_Goals_I_Definitely_Hit.xlsx</div>
+                    <div class="file-description">Aspirational thinking</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">🎤</div>
+                <div class="file-details">
+                    <div class="file-name">audio_recording_hot_mic.wav</div>
+                    <div class="file-description">"Is my camera on?" (it was)</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">📁</div>
+                <div class="file-details">
+                    <div class="file-name">New_Folder_(47)</div>
+                    <div class="file-description">Empty, but felt important at the time</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">💼</div>
+                <div class="file-details">
+                    <div class="file-name">resignation_letter_draft_17.doc</div>
+                    <div class="file-description">Cathartic to write, never sent</div>
+                </div>
+            </div>
+            <div class="file-item">
+                <div class="file-icon">🎮</div>
+                <div class="file-details">
+                    <div class="file-name">SolitaireHighScores.dat</div>
+                    <div class="file-description">Evidence destroyed</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Snake Game Window -->
+    <div id="snakeGameWindow" class="snake-game-window" style="display: none;">
+        <div class="modal-title-bar">
+            <span class="modal-title">Snake.exe</span>
+            <button class="modal-close" onclick="closeSnakeGame()">×</button>
+        </div>
+        <div class="snake-game-content">
+            <div class="snake-score">Score: <span id="snakeScore">0</span></div>
+            <canvas id="snakeCanvas" width="400" height="400"></canvas>
+            <div class="snake-controls">Use Arrow Keys • Space to Restart</div>
+        </div>
     </div>
 
     <!-- Edit Away Message Modal -->
@@ -369,6 +1101,45 @@
             </div>
             <div class="modal-content">
                 <label class="form-label">Enter new Away message:</label>
+                
+                <div class="formatting-toolbar">
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Font:</span>
+                        <select id="fontSelect" class="toolbar-select" onchange="updateMessageStyle()">
+                            <option value="Comic Sans MS">Comic Sans</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Tahoma" selected>Tahoma</option>
+                        </select>
+                    </div>
+                    
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Size:</span>
+                        <select id="fontSizeSelect" class="toolbar-select" onchange="updateMessageStyle()">
+                            <option value="10px">10</option>
+                            <option value="12px">12</option>
+                            <option value="14px" selected>14</option>
+                            <option value="16px">16</option>
+                            <option value="18px">18</option>
+                            <option value="20px">20</option>
+                        </select>
+                    </div>
+                    
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">Text:</span>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="textColor" class="color-picker" value="#000000" onchange="updateMessageStyle()">
+                        </div>
+                    </div>
+                    
+                    <div class="toolbar-group">
+                        <span class="toolbar-label">BG:</span>
+                        <div class="color-picker-wrapper">
+                            <input type="color" id="bgColor" class="color-picker" value="#ffffff" onchange="updateMessageStyle()">
+                        </div>
+                    </div>
+                </div>
+                
                 <textarea id="customMessage" class="form-textarea" placeholder="I am away from my computer right now..."></textarea>
                 
                 <div class="modal-buttons">
@@ -418,8 +1189,9 @@
                 border: 3px solid;
                 border-color: #dfdfdf #404040 #404040 #dfdfdf;
                 padding: 0;
-                max-width: 90%;
                 box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.3);
+                display: inline-block;
+                max-width: 90vw;
             ">
                 <div style="
                     background: linear-gradient(180deg, #0a246a 0%, #0e3eb3 50%, #0a246a 100%);
@@ -433,11 +1205,11 @@
                 </div>
                 <div style="
                     text-align: center;
-                    padding: 60px 80px;
+                    padding: 40px;
                     background: white;
                 ">
                     <div id="displayMessage" style="
-                        font-size: 48px;
+                        font-size: 64px;
                         font-weight: bold;
                         color: #000000;
                         line-height: 1.4;
@@ -450,12 +1222,118 @@
     </div>
 
     <script>
-        function showMessage(message) {
-            document.getElementById('displayMessage').textContent = message;
+        // Window focus management
+        let currentZIndex = 100;
+
+        function bringToFront(element) {
+            currentZIndex++;
+            element.style.zIndex = currentZIndex;
+        }
+
+        // Add click handlers to all windows
+        document.addEventListener('DOMContentLoaded', function() {
+            const windows = [
+                document.querySelector('.buddy-list-window'),
+                document.getElementById('myComputerWindow'),
+                document.getElementById('recycleBinWindow'),
+                document.getElementById('snakeGameWindow')
+            ];
+
+            windows.forEach(window => {
+                if (window) {
+                    window.addEventListener('mousedown', function() {
+                        bringToFront(this);
+                    });
+                }
+            });
+        });
+
+        function showMessage(message, styled = false) {
+            const displayDiv = document.getElementById('displayMessage');
+            
+            if (styled) {
+                // Show styled message
+                displayDiv.innerHTML = message;
+            } else {
+                // Show plain text message
+                displayDiv.textContent = message;
+                displayDiv.style.fontFamily = 'Tahoma, Arial, sans-serif';
+                displayDiv.style.color = '#000';
+                displayDiv.style.backgroundColor = 'transparent';
+            }
+            
             document.querySelector('.buddy-list-window').style.display = 'none';
             document.getElementById('editModal').style.display = 'none';
             document.getElementById('messageView').style.display = 'block';
             document.body.style.overflow = 'hidden';
+        }
+
+        function showStyledPreset(text, font, fontSize, textColor, bgColor) {
+            const styledMessage = `<span style="
+                font-family: ${font};
+                font-size: 56px;
+                color: ${textColor};
+                background-color: ${bgColor};
+                padding: 60px 80px;
+                border-radius: 12px;
+                display: inline-block;
+                word-wrap: break-word;
+            ">${text}</span>`;
+            
+            showMessage(styledMessage, true);
+        }
+
+        function showRandomSongLyrics() {
+            const songs = [
+                { lyrics: "~*~*~*~<br><br>I'm not okay<br>(I promise)<br><br>~*~*~*~<br><i>- My Chemical Romance</i>", font: "Comic Sans MS", text: "#000000", bg: "#ff99cc" },
+                { lyrics: "───────────<br><br>In the end,<br>it doesn't even matter...<br><br>───────────<br><i>- Linkin Park</i>", font: "Times New Roman", text: "#ffffff", bg: "#000000" },
+                { lyrics: "✿✿✿✿✿<br><br>So why don't you<br>SLIDE?<br><br>✿✿✿✿✿<br><i>- Goo Goo Dolls</i>", font: "Arial", text: "#0066cc", bg: "#ffff99" },
+                { lyrics: "★☆★☆★<br><br>Hey now,<br>you're an all star<br><br>★☆★☆★<br><i>- Smash Mouth</i>", font: "Comic Sans MS", text: "#ff6600", bg: "#00ffff" },
+                { lyrics: "••••••••<br><br>It's gonna be me...<br><br>••••••••<br><i>- NSYNC</i>", font: "Arial", text: "#ffffff", bg: "#0000ff" },
+                { lyrics: "~*~*~*~<br><br>Bye bye bye<br>👋<br><br>~*~*~*~<br><i>- NSYNC</i>", font: "Comic Sans MS", text: "#ff00ff", bg: "#00ff00" },
+                { lyrics: "♥♥♥♥♥<br><br>...baby one more time<br><br>♥♥♥♥♥<br><i>- Britney</i>", font: "Arial", text: "#ff1493", bg: "#fff0f5" },
+                { lyrics: "───────────<br><br>I want it THAT way<br><br>───────────<br><i>- Backstreet Boys</i>", font: "Times New Roman", text: "#000080", bg: "#add8e6" },
+                { lyrics: "☁☁☁<br><br>~cause you had a<br>bad day~<br><br>☁☁☁<br><i>- Daniel Powter</i>", font: "Tahoma", text: "#8b0000", bg: "#f0e68c" },
+                { lyrics: "✖✖✖✖✖<br><br>all the SMALL THINGS<br>true care, truth brings<br><br>✖✖✖✖✖<br><i>- blink-182</i>", font: "Comic Sans MS", text: "#00ff00", bg: "#000000" },
+                { lyrics: "♪♪♪♪♪<br><br>Sugar we're going<br>down swinging<br><br>♪♪♪♪♪<br><i>- Fall Out Boy</i>", font: "Arial", text: "#ffffff", bg: "#cc0000" },
+                { lyrics: "───────────<br><br>Welcome to the<br>Black Parade<br><br>───────────<br><i>- My Chemical Romance</i>", font: "Times New Roman", text: "#ffffff", bg: "#000000" },
+                { lyrics: "✨✨✨✨✨<br><br>I'm bringing<br>SEXY BACK<br><br>✨✨✨✨✨<br><i>- Justin Timberlake</i>", font: "Comic Sans MS", text: "#ffd700", bg: "#000000" },
+                { lyrics: "♥♥♥♥♥<br><br>Mr. Brightside<br>it started out with a kiss...<br><br>♥♥♥♥♥<br><i>- The Killers</i>", font: "Tahoma", text: "#ff0000", bg: "#ffffff" },
+                { lyrics: "~*~*~*~<br><br>I Write Sins<br>Not Tragedies<br><br>~*~*~*~<br><i>- Panic! At The Disco</i>", font: "Arial", text: "#800080", bg: "#ffccff" },
+                { lyrics: "☼☼☼☼☼<br><br>Ocean Avenue...<br>where I used to sit and<br>talk with you<br><br>☼☼☼☼☼<br><i>- Yellowcard</i>", font: "Times New Roman", text: "#0066cc", bg: "#ffffcc" },
+                { lyrics: "───────────<br><br>Vindicated<br>I am selfish<br>I am wrong<br><br>───────────<br><i>- Dashboard Confessional</i>", font: "Comic Sans MS", text: "#cc0000", bg: "#e6e6fa" },
+                { lyrics: "✿✿✿✿✿<br><br>What if God was<br>one of us?<br><br>✿✿✿✿✿<br><i>- Joan Osborne</i>", font: "Times New Roman", text: "#003366", bg: "#ffffff" },
+                { lyrics: "★☆★☆★<br><br>So I put my hands up<br>They're playing my song<br><br>★☆★☆★<br><i>- Miley Cyrus</i>", font: "Arial", text: "#ff00ff", bg: "#ffff00" },
+                { lyrics: "♥♥♥♥♥<br><br>You're gonna miss me<br>when I'm gone<br><br>♥♥♥♥♥<br><i>- Anna Kendrick</i>", font: "Comic Sans MS", text: "#ff0000", bg: "#ffff00" }
+            ];
+
+            const random = songs[Math.floor(Math.random() * songs.length)];
+            const styledMessage = `<span style="
+                font-family: ${random.font};
+                font-size: 42px;
+                color: ${random.text};
+                background-color: ${random.bg};
+                padding: 60px 80px;
+                border-radius: 12px;
+                display: inline-block;
+                word-wrap: break-word;
+                line-height: 1.5;
+            ">${random.lyrics}</span>`;
+            
+            showMessage(styledMessage, true);
+        }
+
+        function updateMessageStyle() {
+            const textarea = document.getElementById('customMessage');
+            const font = document.getElementById('fontSelect').value;
+            const fontSize = document.getElementById('fontSizeSelect').value;
+            const textColor = document.getElementById('textColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            
+            textarea.style.fontFamily = font;
+            textarea.style.fontSize = fontSize;
+            textarea.style.color = textColor;
+            textarea.style.backgroundColor = bgColor;
         }
 
         function openEditModal() {
@@ -467,11 +1345,40 @@
         }
 
         function showCustomMessage() {
-            const message = document.getElementById('customMessage').value.trim();
+            const textarea = document.getElementById('customMessage');
+            const message = textarea.value.trim();
+            
             if (message) {
+                const font = document.getElementById('fontSelect').value;
+                const fontSize = document.getElementById('fontSizeSelect').value;
+                const textColor = document.getElementById('textColor').value;
+                const bgColor = document.getElementById('bgColor').value;
+                
+                // Create styled message HTML
+                const styledMessage = `<span style="
+                    font-family: ${font};
+                    font-size: calc(${fontSize} * 3.5);
+                    color: ${textColor};
+                    background-color: ${bgColor};
+                    padding: 60px 80px;
+                    border-radius: 12px;
+                    display: inline-block;
+                    word-wrap: break-word;
+                ">${message}</span>`;
+                
                 closeEditModal();
-                showMessage(message);
-                document.getElementById('customMessage').value = '';
+                showMessage(styledMessage, true);
+                
+                // Reset form
+                textarea.value = '';
+                textarea.style.fontFamily = 'Tahoma, Arial, sans-serif';
+                textarea.style.fontSize = '14px';
+                textarea.style.color = '#000';
+                textarea.style.backgroundColor = '#fff';
+                document.getElementById('fontSelect').value = 'Tahoma';
+                document.getElementById('fontSizeSelect').value = '14px';
+                document.getElementById('textColor').value = '#000000';
+                document.getElementById('bgColor').value = '#ffffff';
             } else {
                 alert('Please type a message first!');
             }
@@ -501,6 +1408,317 @@
                 showCustomMessage();
             }
         });
+
+        // Update taskbar clock
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours();
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const displayHours = hours % 12 || 12;
+            document.getElementById('taskbarClock').textContent = `${displayHours}:${minutes} ${ampm}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Make all windows draggable
+        let draggedWindow = null;
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
+
+        function makeDraggable(windowElement) {
+            const titleBar = windowElement.querySelector('.title-bar, .modal-title-bar');
+            if (!titleBar) return;
+
+            titleBar.addEventListener('mousedown', function(e) {
+                draggedWindow = windowElement;
+                const rect = windowElement.getBoundingClientRect();
+                initialX = e.clientX - rect.left;
+                initialY = e.clientY - rect.top;
+                isDragging = true;
+                
+                // Remove transform to allow absolute positioning for centered window
+                if (windowElement.style.transform && windowElement.style.transform.includes('translate')) {
+                    windowElement.style.transform = 'none';
+                }
+                
+                bringToFront(windowElement);
+            });
+        }
+
+        document.addEventListener('mousemove', function(e) {
+            if (isDragging && draggedWindow) {
+                e.preventDefault();
+                currentX = e.clientX - initialX;
+                currentY = e.clientY - initialY;
+
+                // Keep window within viewport bounds
+                const maxX = window.innerWidth - draggedWindow.offsetWidth;
+                const maxY = window.innerHeight - draggedWindow.offsetHeight - 30; // 30 for taskbar
+                
+                currentX = Math.max(0, Math.min(currentX, maxX));
+                currentY = Math.max(0, Math.min(currentY, maxY));
+
+                draggedWindow.style.top = currentY + 'px';
+                draggedWindow.style.left = currentX + 'px';
+                draggedWindow.style.right = 'auto';
+                draggedWindow.style.bottom = 'auto';
+            }
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+            draggedWindow = null;
+        });
+
+        // Initialize draggable windows on load
+        document.addEventListener('DOMContentLoaded', function() {
+            makeDraggable(document.querySelector('.buddy-list-window'));
+            makeDraggable(document.getElementById('myComputerWindow'));
+            makeDraggable(document.getElementById('recycleBinWindow'));
+            makeDraggable(document.getElementById('snakeGameWindow'));
+            makeDraggable(document.getElementById('startMenu'));
+        });
+
+        // BRB Window
+        function openBRBWindow() {
+            const window = document.querySelector('.buddy-list-window');
+            window.style.display = 'block';
+            bringToFront(window);
+            document.getElementById('brbTaskbar').style.display = 'flex';
+        }
+
+        function closeBRBWindow() {
+            document.querySelector('.buddy-list-window').style.display = 'none';
+            document.getElementById('brbTaskbar').style.display = 'none';
+        }
+
+        // My Computer
+        function openMyComputer() {
+            const window = document.getElementById('myComputerWindow');
+            window.style.display = 'block';
+            bringToFront(window);
+            addTaskbarItem('myComputerTaskbar', '💻', 'My Computer', 'closeMyComputer');
+        }
+
+        function closeMyComputer() {
+            document.getElementById('myComputerWindow').style.display = 'none';
+            removeTaskbarItem('myComputerTaskbar');
+        }
+
+        // Recycle Bin
+        function openRecycleBin() {
+            const window = document.getElementById('recycleBinWindow');
+            window.style.display = 'block';
+            bringToFront(window);
+            addTaskbarItem('recycleBinTaskbar', '🗑️', 'Recycle Bin', 'closeRecycleBin');
+        }
+
+        function closeRecycleBin() {
+            document.getElementById('recycleBinWindow').style.display = 'none';
+            removeTaskbarItem('recycleBinTaskbar');
+        }
+
+        // Taskbar management
+        function addTaskbarItem(id, icon, label, closeFunction) {
+            if (document.getElementById(id)) return;
+            const taskbar = document.getElementById('taskbarPrograms');
+            const item = document.createElement('div');
+            item.className = 'taskbar-program';
+            item.id = id;
+            item.innerHTML = `
+                <span style="font-size: 14px;">${icon}</span> 
+                <span style="flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${label}</span>
+                <button class="taskbar-close" onclick="event.stopPropagation(); ${closeFunction}();">×</button>
+            `;
+            taskbar.appendChild(item);
+        }
+
+        function removeTaskbarItem(id) {
+            const item = document.getElementById(id);
+            if (item) item.remove();
+        }
+
+        // Start Menu
+        function toggleStartMenu() {
+            const menu = document.getElementById('startMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close start menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('startMenu');
+            const startBtn = document.querySelector('.start-button');
+            if (menu.style.display === 'block' && !menu.contains(e.target) && !startBtn.contains(e.target)) {
+                menu.style.display = 'none';
+            }
+        });
+
+        // Snake Game
+        let snakeGame = null;
+
+        function openSnakeGame() {
+            const window = document.getElementById('snakeGameWindow');
+            window.style.display = 'block';
+            bringToFront(window);
+            addTaskbarItem('snakeTaskbar', '🐍', 'Snake.exe', 'closeSnakeGame');
+            if (!snakeGame) {
+                snakeGame = new SnakeGame();
+            }
+            snakeGame.start();
+        }
+
+        function closeSnakeGame() {
+            document.getElementById('snakeGameWindow').style.display = 'none';
+            removeTaskbarItem('snakeTaskbar');
+            if (snakeGame) {
+                snakeGame.stop();
+            }
+        }
+
+        class SnakeGame {
+            constructor() {
+                this.canvas = document.getElementById('snakeCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.gridSize = 20;
+                this.tileCount = 20;
+                this.reset();
+                
+                document.addEventListener('keydown', (e) => this.handleKeyPress(e));
+            }
+
+            reset() {
+                this.snake = [{x: 10, y: 10}];
+                this.dx = 0;
+                this.dy = 0;
+                this.food = this.randomFood();
+                this.score = 0;
+                this.gameOver = false;
+                document.getElementById('snakeScore').textContent = this.score;
+            }
+
+            randomFood() {
+                return {
+                    x: Math.floor(Math.random() * this.tileCount),
+                    y: Math.floor(Math.random() * this.tileCount)
+                };
+            }
+
+            handleKeyPress(e) {
+                if (!document.getElementById('snakeGameWindow').style.display || 
+                    document.getElementById('snakeGameWindow').style.display === 'none') {
+                    return;
+                }
+
+                if (e.code === 'Space' && this.gameOver) {
+                    this.reset();
+                    return;
+                }
+
+                if (e.code === 'ArrowLeft' && this.dx === 0) {
+                    this.dx = -1;
+                    this.dy = 0;
+                } else if (e.code === 'ArrowRight' && this.dx === 0) {
+                    this.dx = 1;
+                    this.dy = 0;
+                } else if (e.code === 'ArrowUp' && this.dy === 0) {
+                    this.dx = 0;
+                    this.dy = -1;
+                } else if (e.code === 'ArrowDown' && this.dy === 0) {
+                    this.dx = 0;
+                    this.dy = 1;
+                }
+            }
+
+            update() {
+                if (this.gameOver || (this.dx === 0 && this.dy === 0)) return;
+
+                const head = {
+                    x: this.snake[0].x + this.dx,
+                    y: this.snake[0].y + this.dy
+                };
+
+                // Check wall collision
+                if (head.x < 0 || head.x >= this.tileCount || 
+                    head.y < 0 || head.y >= this.tileCount) {
+                    this.gameOver = true;
+                    return;
+                }
+
+                // Check self collision
+                if (this.snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+                    this.gameOver = true;
+                    return;
+                }
+
+                this.snake.unshift(head);
+
+                // Check food collision
+                if (head.x === this.food.x && head.y === this.food.y) {
+                    this.score += 10;
+                    document.getElementById('snakeScore').textContent = this.score;
+                    this.food = this.randomFood();
+                } else {
+                    this.snake.pop();
+                }
+            }
+
+            draw() {
+                // Clear canvas
+                this.ctx.fillStyle = '#000';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+                // Draw snake
+                this.ctx.fillStyle = '#00ff00';
+                this.snake.forEach((segment, index) => {
+                    this.ctx.fillRect(
+                        segment.x * this.gridSize,
+                        segment.y * this.gridSize,
+                        this.gridSize - 2,
+                        this.gridSize - 2
+                    );
+                });
+
+                // Draw food
+                this.ctx.fillStyle = '#ff0000';
+                this.ctx.fillRect(
+                    this.food.x * this.gridSize,
+                    this.food.y * this.gridSize,
+                    this.gridSize - 2,
+                    this.gridSize - 2
+                );
+
+                // Game over text
+                if (this.gameOver) {
+                    this.ctx.fillStyle = '#fff';
+                    this.ctx.font = '20px Tahoma';
+                    this.ctx.textAlign = 'center';
+                    this.ctx.fillText('GAME OVER', this.canvas.width / 2, this.canvas.height / 2);
+                    this.ctx.font = '14px Tahoma';
+                    this.ctx.fillText('Press SPACE to restart', this.canvas.width / 2, this.canvas.height / 2 + 30);
+                }
+            }
+
+            gameLoop() {
+                this.update();
+                this.draw();
+            }
+
+            start() {
+                if (this.interval) return;
+                this.interval = setInterval(() => this.gameLoop(), 100);
+            }
+
+            stop() {
+                if (this.interval) {
+                    clearInterval(this.interval);
+                    this.interval = null;
+                }
+            }
+        }
     </script>
 </body>
 </html>
