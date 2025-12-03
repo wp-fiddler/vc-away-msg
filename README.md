@@ -1,34 +1,27 @@
-# Status Messages - Standalone Web App
+# Status Messages - Web App
 
-A simple web page for creating quick status messages for video meetings. Works with **any video platform** (Zoom Desktop, Google Meet, Microsoft Teams, Webex, etc.)
+A simple web app for creating quick status messages for video meetings. Works with **any video platform** (Zoom Desktop, Google Meet, Microsoft Teams, Webex, etc.)
+
+## 🌐 Live App
+
+**Visit:** https://wp-fiddler.github.io/vc-away-msg/
+
+Bookmark this URL for instant access!
 
 ## Features
 
-✨ **No Installation Required** - Just open the HTML file  
+✨ **No Installation Required** - Just open the URL  
 💬 **8 Preset Messages** - One-click common messages  
 ✏️ **Custom Messages** - Type anything you want  
 🎨 **Beautiful Display** - Large, colorful, easy-to-read messages  
-🔖 **Bookmark It** - Add to your bookmarks for instant access  
-📱 **Works Everywhere** - Desktop Zoom, Meet, Teams, any platform  
+🔖 **Works Everywhere** - Desktop Zoom, Meet, Teams, any platform  
+📱 **Access from Any Device** - Phone, tablet, laptop
 
 ## How to Use
 
-### Option 1: Open Directly (Simplest)
-
-1. **Find the file**: `/Users/wp/Documents/CursorProjects/status-messages-webapp/index.html`
-2. **Double-click it** - Opens in your default browser
-3. **Bookmark it** (Cmd+D on Mac, Ctrl+D on Windows)
-4. **Use it anytime!**
-
-### Option 2: Host it Online (Optional)
-
-Upload to:
-- **GitHub Pages** (free)
-- **Netlify** (free)
-- **Vercel** (free)
-- Any web hosting
-
-Then access from anywhere!
+1. **Open the app**: https://wp-fiddler.github.io/vc-away-msg/
+2. **Bookmark it** (Cmd+D on Mac, Ctrl+D on Windows)
+3. **Use it anytime!**
 
 ## In a Meeting
 
